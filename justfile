@@ -24,14 +24,14 @@ build:
     set -euxo pipefail
     # accepts justfile env/vars
     if [[ {{arch}} == "arm64" ]]; then
-        docker build -f Dockerfile.web -t {{APP}}:{{TAG}} --build-arg CHIPSET_ARCH=aarch64-linux-gnu .
+        docker build -f Dockerfile -t {{APP}}:{{TAG}} --build-arg CHIPSET_ARCH=aarch64-linux-gnu .
     else
-        docker buildx build -f Dockerfile.web --progress=plain -t {{APP}}:{{TAG}} --build-arg CHIPSET_ARCH=x86_64-linux-gnu --load .
+        docker buildx build -f Dockerfile --progress=plain -t {{APP}}:{{TAG}} --build-arg CHIPSET_ARCH=x86_64-linux-gnu --load .
     fi
 
 # intel build
 buildx:
-    docker buildx build -f Dockerfile.web --progress=plain -t $TAG --build-arg CHIPSET_ARCH=x86_64-linux-gnu --load .
+    docker buildx build -f Dockerfile --progress=plain -t $TAG --build-arg CHIPSET_ARCH=x86_64-linux-gnu --load .
 
 # arm build w/docker-compose defaults
 build-clean:
