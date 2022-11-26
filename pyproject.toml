@@ -8,7 +8,7 @@ packages = [{include = "flet_demo"}]
 
 [tool.poetry.dependencies]
 python = "3.10.8"
-flet = "^0.1.62"
+flet = "^0.2.2"
 python-decouple = "^3.6"
 
 [tool.poetry.group.dev.dependencies]
